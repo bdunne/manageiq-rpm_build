@@ -19,7 +19,6 @@ jobs:
     - name: Run container build script
       run: bin/build_container_image
   build_rpms:
-    needs: build_rpm_build_container
     runs-on: ubuntu-latest
     steps:
     - name: Set up registry credentials
