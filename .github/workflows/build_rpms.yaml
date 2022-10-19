@@ -19,7 +19,6 @@ jobs:
       run: bin/build_container_image
   build_rpms:
     needs: build_rpm_build_container
-    if: github.repository_owner == 'ManageIQ'
     runs-on: ubuntu-latest
     steps:
     - name: Set up registry credentials
@@ -36,7 +35,7 @@ jobs:
         echo "  s3_api:" >> options/options.yml
         echo "    access_key: ${{ secrets.RPM_BUILD_S3_ACCESS_KEY }}" >> options/options.yml
         echo "    secret_key: ${{ secrets.RPM_BUILD_S3_SECRET_KEY }}" >> options/options.yml
-        docker run -v options:/root/OPTIONS docker.io/manageiq/rpm_build:latest build --build-type nightly --update-rpm-repo
+        docker run -v options:/root/OPTIONS docker.io/manageiq/rpm_build:latest ls -al /root/OPTIONS/
   notify_builders:
     needs: build_rpms
     if: github.repository_owner == 'ManageIQ'
