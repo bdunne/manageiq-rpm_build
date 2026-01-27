@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+pushd packages/kafka
+  mock --spec=./kafka.spec -r centos-stream-9-x86_64 --sources=./ --enable-network
+popd
+
+set +e
