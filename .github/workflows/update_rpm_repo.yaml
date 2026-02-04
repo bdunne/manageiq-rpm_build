@@ -10,7 +10,7 @@ permissions:
   contents: read
 jobs:
   update_rpm_repo:
-    if: github.repository_owner == 'ManageIQ'
+    # if: github.repository_owner == 'ManageIQ'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
