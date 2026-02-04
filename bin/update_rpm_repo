@@ -1,0 +1,7 @@
+#!/bin/bash
+
+pushd packages
+  docker build . -t localhost/createrepo:latest
+popd
+
+docker run --rm --privileged --cap-add SYS_ADMIN -v $(pwd):/work:z -v /tmp/options:/root/OPTIONS:z localhost/mock:latest bin/update_rpm_repo.rb
