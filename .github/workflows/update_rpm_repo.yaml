@@ -21,4 +21,5 @@ jobs:
         echo "    secret_key: ${{ secrets.RPM_BUILD_S3_SECRET_KEY }}" >> /tmp/options/options.yml
     - name: Update RPM repo
       run: |
+        docker build . -t docker.io/manageiq/rpm_build:latest
         docker run --rm -v /tmp/options:/root/OPTIONS:z docker.io/manageiq/rpm_build:latest update_rpm_repo
